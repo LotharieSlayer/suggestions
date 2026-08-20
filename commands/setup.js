@@ -1,3 +1,4 @@
+const { MessageFlags } = require("discord.js");
 const { setupSuggestions } = require("../utils/enmapUtils");
 
 async function addSetupCommand(slashCommand) {
@@ -27,13 +28,13 @@ async function execute(interaction) {
                 );
                 await interaction.reply({
                     content: `Channel <#${interaction.channel.id}> ajouté à la liste des channels propositions !`,
-                    ephemeral: true,
+                    flags: MessageFlags.Ephemeral,
                 });
             } else {
                 setupSuggestions.delete(interaction.channel.id);
                 await interaction.reply({
                     content: `Channel <#${interaction.channel.id}> supprimé de la liste des channels propositions !`,
-                    ephemeral: true,
+                    flags: MessageFlags.Ephemeral,
                 });
             }
             break;
